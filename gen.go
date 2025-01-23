@@ -28,17 +28,17 @@ func genDir(version string) {
 	// {Version}
 	os.Mkdir(dirName, 0777)
 
-	fileName := filepath.Join(dirName, "go.mod")
+	//fileName := filepath.Join(dirName, "go.mod")
 	goFileName := filepath.Join(dirName, "hello.go")
 	goFile := fmt.Sprintf(`package %s
 func HelloWorld() {
 	println("ni howdy %s")
 }
 				`, version, version)
-	modContent := fmt.Sprintf(`module github.com/MeteorsLiu/nestedmodule/cjson/%s
-go 1.23.4
-				`, version)
-	os.WriteFile(fileName, []byte(modContent), 0777)
+	// 	modContent := fmt.Sprintf(`module github.com/MeteorsLiu/nestedmodule/cjson/%s
+	// go 1.23.4
+	// 				`, version)
+	// 	os.WriteFile(fileName, []byte(modContent), 0777)
 	os.WriteFile(goFileName, []byte(goFile), 0777)
 
 	//exec.Command("git", "tag", fmt.Sprintf("cjson@%s", version)).Run()
