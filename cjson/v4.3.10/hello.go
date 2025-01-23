@@ -1,5 +1,5 @@
-package cjson
+package v4.3.10
 func HelloWorld() {
 	println("ni howdy v4.3.10")
 }
-				%!(EXTRA string=v4.3.10)
+				
