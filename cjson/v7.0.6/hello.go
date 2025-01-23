@@ -1,0 +1,5 @@
+package cjson
+func HelloWorld() {
+	println("ni howdy v7.0.6")
+}
+				%!(EXTRA string=v7.0.6)
