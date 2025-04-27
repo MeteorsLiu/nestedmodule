@@ -9,7 +9,7 @@ import (
 
 func genVersion(fn func(string)) {
 	for i := 0; i < 10; i++ {
-		major := fmt.Sprintf("v%d.", i)
+		major := fmt.Sprintf("%d.", i)
 		for j := 0; j < 10; j++ {
 			minor := fmt.Sprintf("%d.", j)
 			for k := 1; k < 11; k++ {
@@ -30,18 +30,18 @@ func genDir(version string) {
 
 	fileName := filepath.Join(dirName, "go.mod")
 	goFileName := filepath.Join(dirName, "hello.go")
-	goFile := fmt.Sprintf(`package %s
+	goFile := fmt.Sprintf(`package cjson
 func HelloWorld() {
 	println("ni howdy %s")
 }
-				`, version, version)
+				`, version)
 	modContent := fmt.Sprintf(`module github.com/MeteorsLiu/nestedmodule/cjson/%s
 go 1.23.4
 				`, version)
 	os.WriteFile(fileName, []byte(modContent), 0777)
 	os.WriteFile(goFileName, []byte(goFile), 0777)
 
-	//exec.Command("git", "tag", fmt.Sprintf("cjson@%s", version)).Run()
+	exec.Command("git", "tag", fmt.Sprintf("cjson/%s/v0.1.0", version)).Run()
 }
 
 func removeTag(version string) {
